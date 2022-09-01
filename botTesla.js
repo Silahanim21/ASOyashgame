@@ -75,8 +75,8 @@ const OyunYaratHusnuEhedov = chatId => {
 }
 
 const ozelMesaj = isGroup => Degisken(`
-    *Salam,👋 Mən təxmin oyun botuyam zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et @ASOyashqalib🙂*
-    ${isGroup ? "" : "\n*Əsas əmrlərin siyahısı üçün /komek*"}
+    *Salam, Mən təxmin oyun botuyam zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et🤖*
+    ${isGroup ? "" : "\n*Əsas əmrlərin siyahısı üçün /help*"}
 `)
 
 
@@ -102,7 +102,7 @@ const dbChatAlHusnuEhedov = chatId => {  // CHAT ID ALMASI
 		members: {}
 	}
 	db.insert(chatId, data)
-   }
+}
 const dbUserAlHusnuEhedov = firstName => {  // KULLANICI ADI, PUAN ALMASI
 	return {
 		firstName: firstName,
@@ -149,7 +149,7 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 		}
 	}
 	else {
-		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat @ASOyashqalib ➡️  /basla")
+		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat ➡️  /game")
 	}
 }
 const RaundMesajHusnuEhedov = (chatId, round, time) => {
@@ -168,7 +168,7 @@ const RaundMesajHusnuEhedov = (chatId, round, time) => {
 
 	return Degisken(`
 		*🔹 Raund ${round + 1}/${process.env.RAUND_SAYI}*
-		🤔 Sizcə bu şəxsin neçə yaşı var❓️ @ASOresmi
+		❓ Sizcə bu şəxsin neçə yaşı var
 		${answers.length > 0 ? 
 			`\n${answers.map((member, index) => `${index + 1}. *${member.firstName}*: ${member.answer}`).join("\n")}\n`
 			:
@@ -230,7 +230,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 			if (!top.every(member => member.answer === null)) {
 				ctx.replyWithMarkdown(
 					Degisken(`
-						✅ Şəkildəki şəxs: @ASOyashqalib *${rightAnswer} ${HusnuEhedov(rightAnswer, "yaşında", "yaşında", "yaşında")}*\n*⭐️Xal qalibləri:*
+						✅ Şəkildəki şəxs: *${rightAnswer} ${HusnuEhedov(rightAnswer, "yaşında", "yaşında", "yaşında")}*\n*⭐️Xal qalibləri:*
 
 						${top.sort((a, b) => b.addScore - a.addScore).map((member, index) => `${["🥇","🎖","🏅"][index] || "🔸"} ${index + 1}. *${member.firstName}*: ${ArtiEksi(member.addScore)}`).join("\n")}
 					`),
@@ -268,14 +268,14 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 
 
 
-bot.command("basla", (ctx) => {
+bot.command("game", (ctx) => {
 	let message = ctx.update.message
 	if (message.chat.id < 0) {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
 			if (chat.isPlaying) {
-				return ctx.reply("❗️ Oyun hal-hazırda aktivdir, Dayandırmaq üçün /dur.")
+				return ctx.reply("❗️ Oyun hal-hazırda aktivdir, Dayandırmaq üçün /stop.")
 			}
 			else {
 				chat.isPlaying = true
@@ -289,7 +289,7 @@ bot.command("basla", (ctx) => {
 		else {
 			dbChatAlHusnuEhedov(chatId)
 		}
-		ctx.replyWithHTML(`<b><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> Tərəfindən,\n\nYaş Təxmin Oyunu Başladı @ASOyashqalib 👨🏻‍💻</b>`)
+		ctx.replyWithHTML(`<b><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> Tərəfindən,\n\nYaş Təxmin Oyunu Başladı 🎉</b>`)
 		OyunHusnuEhedov(ctx, chatId)
 	}
 	else {
@@ -299,7 +299,7 @@ bot.command("basla", (ctx) => {
 
 
 
-bot.command("dur", (ctx) => {
+bot.command("stop", (ctx) => {
     let message = ctx.update.message
     if (message.chat.id < 0) {
         let chatId = message.chat.id
@@ -320,7 +320,7 @@ bot.command("top", (ctx) => {
 		let chat = getChat(chatId)
 		if (chat) {
 			let top = []
-			NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {90.days.join("\n")}
+			NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {
 				top.push({
 					firstName: member.firstName,
 					score: member.totalScore
@@ -334,9 +334,9 @@ bot.command("top", (ctx) => {
 			})
 			if (top.length > 0) {
 				ctx.replyWithMarkdown(Degisken(`
-*✅ Qrupun ən yaxşı 25 oyunçusu:*
+*✅ Qrupun ən yaxşı 20 oyunçusu:*
 
-${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
+${top.sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
 				`))
 			}
 			else {
@@ -366,7 +366,7 @@ bot.command("g", (ctx) => {
             for (let i in comments) {
                 let chatId = comments[i]
                 let chat = getChat(chatId)
-                NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {90.days.join("\n")}
+                NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {
                     top.push({
                         firstName: member.firstName,
                         score: member.totalScore
@@ -381,21 +381,21 @@ bot.command("g", (ctx) => {
             }
             if (top.length > 0) {
                 ctx.replyWithHTML(Degisken(`
-     <b>🎖Qruplar üzrə ən yaxşı Top-25</b>\n
-${(top).sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 1}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
+     <b>🎖Qruplar üzrə ən yaxşı Top-20</b>\n
+${(top).sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 1}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
                 `))
             }
         }
     })
 })
-/// /// /// /// /// /// ///  <!-- GLOBAL KULLANICI RATING SON --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// ///  <!-- GLOBAL KULLANICI RATING SON --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
 
 
 
-bot.command("komek", (ctx) => {
+bot.command("help", (ctx) => {
     return ctx.replyWithMarkdown(Degisken(`
         *Salam! "Təxmin" oyunu üçün\nyaradırmış bir botam🤖*\n🆘*Bot yalnız qruplar üçün nəzərdə tutulub!*\n\n_ℹ️Qaydalar budur : Mən sizə şəkillər atıram və siz kateqoriyaya uyğun rəqəmlər təxmin etməlisiniz🕵🏼‍♂️ Əvvəlcə botu qrupa əlavə edin və Qrupda media icazəni aktiv edin! və ya botu admin edin_🗣\n_Sonra Əmrlər ilə oyuna başlaya bilərsiniz_🎯\n
-          *Əsas əmrlərin siyahısı👇🏻*\n\n🎲 /basla - _Oyunu Başlat_\n⛔️ /dur - _Oyunu dayandırmaq_\n📊 /top - _Oyunçuların xalları göstərir_\n_🌍 /g - Global xallar_\nℹ️ /komek - _Sizə kömək edəcək_\n👤 /info - _İstifadəçi haqqında məlumat_\n🆔 /id - _Qrup məlumatı_`))
+          *Əsas əmrlərin siyahısı👇🏻*\n\n🎲 /game - _Oyunu Başlat_\n⛔️ /stop - _Oyunu dayandırmaq_\n📊 /top - _Oyunçuların xalları göstərir_\n_🌍 /g - Global xallar_\nℹ️ /help - _Sizə kömək edəcək_\n👤 /info - _İstifadəçi haqqında məlumat_\n🆔 /id - _Qrup məlumatı_`))
 })
 
 bot.command("info", async (ctx) => {
@@ -427,8 +427,8 @@ bot.start(async (ctx) => {
     await ctx.replyWithMarkdown(ozelMesaj(ctx.update.message.chat.id < 0),{
         reply_markup:{
             inline_keyboard:[
-                [{text:'➕️ Botu Qrupa Əlavə Edin ➕️', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'ASO🇦🇿Rəsmi 📣', url:`t.me/ASOresmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'Botu Qrupa Əlavə Edin ✅', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
+                [{text:'Rəsmi Kanalımız 📣', url:`t.me/RichResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -436,12 +436,12 @@ bot.start(async (ctx) => {
 
 bot.action('start', ctx=>{
     ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*Salam,mən təxmin oyun botuyam, Zamanınızı əyləncəli keçirmək üçün\nMəni qrupa əlavə et🤖\n**Əsas əmrlərin siyahısı üçün /komek*
+    ctx.replyWithMarkdown(`*Salam,Mən məxmin oyun botuyam, aamanınızı əyləncəli keçirmək üçün\nMəni qrupa əlavə et🤖\n**Əsas əmrlərin siyahısı üçün /help*
         `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'➕️ Botu Qrupa Əlavə Edin ➕️', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'ASO🇦🇿Rəsmi 📣', url:`t.me/ASOresmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'Botu Qrupa Əlavə Edin ✅', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
+                [{text:'Rəsmi Kanalımız 📣', url:`t.me/RichResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -451,11 +451,11 @@ bot.action('start', ctx=>{
 
 bot.action('vip', ctx=>{
     ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*🎈 Qruplar*`,{
+    ctx.replyWithMarkdown(`*🇦🇿 Qruplar*`,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'🤓 Qruplar', callback_data:'AZ'}],
-                [{text:'🥳 Digər Qruplar', callback_data:'TR'}],
+                [{text:'🇦🇿 Qruplar', callback_data:'AZ'}],
+                [{text:'🇦🇿 Digər Qruplar', callback_data:'TR'}],
                 [{text:'🔙 Geri', callback_data:'start'}]
             ]
         }
@@ -465,11 +465,11 @@ bot.action('vip', ctx=>{
 // AZƏRBAYCAN GRUP DÜYMƏLƏRİ
 bot.action('AZ', ctx=>{
     ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*🎈 Qruplar*`,{
+    ctx.replyWithMarkdown(`*🇦🇿 Qruplar*`,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) 🍷Werab Qoxulu 🍾 ', url:'t.me/WerabliAnlar'}],
-                [{text:'2) 🕺Werab Qadın💃 ', url:'t.me/WerabliAnlarr'}],
+                [{text:'1) Qrup ', url:'t.me/KarabakhTeams'}],
+                [{text:'2) Qrup ', url:'t.me/Richsuppp'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
@@ -484,8 +484,8 @@ bot.action('TR', ctx=>{
        `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) 🍷Werab Qoxulu 🍾', url:'t.me/WerabliAnlar'}],
-                [{text:'2) 🕺Werab Qadın💃', url:'t.me/WerabliAnlarr'}],
+                [{text:'1) Qrup', url:'t.me/KarabakhTeams'}],
+                [{text:'2) Qrup', url:'t.me/Richsuppp'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
@@ -515,7 +515,7 @@ bot.on("message", async (ctx) => {
 			let answer = Number(message.text)
 			if (answer <= 0 || answer > 100) {
 				return ctx.reply(
-					"Cavab limiti (1 - 100) @ASOyashqalib 😃",
+					"Cavab limiti (1 - 100)",
 					{
 						reply_to_message_id: ctx.message.message_id,
 					}
