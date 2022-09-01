@@ -319,8 +319,8 @@ bot.command("top", (ctx) => {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
-			let top = [90]
-			NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {
+			let top = []
+			NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {90.days.join("\n")}
 				top.push({
 					firstName: member.firstName,
 					score: member.totalScore
@@ -361,12 +361,12 @@ ${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${[
 bot.command("g", (ctx) => {
     fs.readFile(dbfile, 'utf8', async function(err, doc) {
         var comments = doc.match(/-100\d+/g)
-        let top = [90]
+        let top = []
         if (comments && comments.length > 0) {
             for (let i in comments) {
                 let chatId = comments[i]
                 let chat = getChat(chatId)
-                NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {
+                NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {90.days.join("\n")}
                     top.push({
                         firstName: member.firstName,
                         score: member.totalScore
