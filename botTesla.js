@@ -319,7 +319,7 @@ bot.command("top", (ctx) => {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
-			let top = []
+			let top = [90]
 			NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {
 				top.push({
 					firstName: member.firstName,
@@ -361,7 +361,7 @@ ${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${[
 bot.command("g", (ctx) => {
     fs.readFile(dbfile, 'utf8', async function(err, doc) {
         var comments = doc.match(/-100\d+/g)
-        let top = []
+        let top = [90]
         if (comments && comments.length > 0) {
             for (let i in comments) {
                 let chatId = comments[i]
