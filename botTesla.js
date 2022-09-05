@@ -469,7 +469,7 @@ bot.action('AZ', ctx=>{
         reply_markup:{
             inline_keyboard:[
                 [{text:'1) Qrup ', url:'t.me/WerabliAnlar'}],
-                [{text:'2) Kanal ', url:'t.me/WerabliAnlarr'}],
+                [{text:'2) Kanal ', url:'t.me/WerabliAnlar'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
@@ -485,7 +485,7 @@ bot.action('TR', ctx=>{
         reply_markup:{
             inline_keyboard:[
                 [{text:'1) Qrup', url:'t.me/WerabliAnlar'}],
-                [{text:'2) Kanal', url:'t.me/WerabliAnlarr'}],
+                [{text:'2) Kanal', url:'t.me/WerabliAnlar'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
