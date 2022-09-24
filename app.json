@@ -1,6 +1,6 @@
 {
-  "name": "ASO Game V1 Versiyon",
-  "description": " @ASOyash_bot'un Eski Alt Versiyon Projesi GitHub'da Kullanıcılara Açık Sunuldu.",
+  "name": "𝐕𝐀𝐍𝐄𝐒𝐒𝐀 𝐘𝐀Ş 𝐎𝐘𝐔𝐍𝐔",
+  "description": " @VanessaYash_bot'un Eski Alt Versiyon Projesi GitHub'da Kullanıcılara Açık Sunuldu.",
   "repository": "https://github.com/sirincay/TeslaGamev1",
   "logo": "https://avatars.githubusercontent.com/u/88708263?s=96&v=4",
   "keywords": ["telegram", "bot"],
@@ -15,7 +15,7 @@
     },
     "BOT_ISMI": {
       "description": "Botun Kullanıcı Adını '@' Olmadan Yazın",
-      "value": "ASOyash_bot"
+      "value": "VanessaYash_bot"
     },
     "RAUND_SAYI": {
       "description": "RAUND SAYISI (3-5) İdeal aralık ",
