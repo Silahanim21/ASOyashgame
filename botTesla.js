@@ -75,7 +75,7 @@ const OyunYaratHusnuEhedov = chatId => {
 }
 
 const ozelMesaj = isGroup => Degisken(`
-    *Salam, Mən təxmin oyun botuyam Zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et @ASOresmi👨🏻‍💻*
+    *Salam, Mən təxmin oyun botuyam Zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et @lovelesslifee👨🏻‍💻*
     ${isGroup ? "" : "\n*Əsas əmrlərin siyahısı üçün /komek*"}
 `)
 
@@ -149,7 +149,7 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 		}
 	}
 	else {
-		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat @ASOresmi ➡️  /basla")
+		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat @lovelesslifee ➡️  /basla")
 	}
 }
 const RaundMesajHusnuEhedov = (chatId, round, time) => {
@@ -168,7 +168,7 @@ const RaundMesajHusnuEhedov = (chatId, round, time) => {
 
 	return Degisken(`
 		*🔹 Raund ${round + 1}/${process.env.RAUND_SAYI}*
-		🤔 Sizcə bu şəxsin neçə yaşı var❓ @ASOresmi 🇦🇿
+		🤔 Sizcə bu şəxsin neçə yaşı var❓ @lovelesslifee 🇦🇿
 		${answers.length > 0 ? 
 			`\n${answers.map((member, index) => `${index + 1}. *${member.firstName}*: ${member.answer}`).join("\n")}\n`
 			:
@@ -275,7 +275,7 @@ bot.command("basla", (ctx) => {
 		let chat = getChat(chatId)
 		if (chat) {
 			if (chat.isPlaying) {
-				return ctx.reply("❗️ Oyun hal-hazırda aktivdir, Dayandırmaq üçün @ASOresmi /dur.")
+				return ctx.reply("❗️ Oyun hal-hazırda aktivdir, Dayandırmaq üçün @lovelesslifee /dur.")
 			}
 			else {
 				chat.isPlaying = true
@@ -289,7 +289,7 @@ bot.command("basla", (ctx) => {
 		else {
 			dbChatAlHusnuEhedov(chatId)
 		}
-		ctx.replyWithHTML(`<b><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> Tərəfindən,\n\nYaş Təxmin Oyunu Başladı @ASOresmi 👨🏻‍💻</b>`)
+		ctx.replyWithHTML(`<b><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> Tərəfindən,\n\nYaş Təxmin Oyunu Başladı @lovelesslifee 👨🏻‍💻</b>`)
 		OyunHusnuEhedov(ctx, chatId)
 	}
 	else {
@@ -428,7 +428,7 @@ bot.start(async (ctx) => {
         reply_markup:{
             inline_keyboard:[
                 [{text:'Botu Qrupa Əlavə Edin ✅', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'ASO🇦🇿Rəsmi 📣', url:`t.me/ASOResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'lovelesslifee 📣', url:`t.me/lovelesslifee`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -441,7 +441,7 @@ bot.action('start', ctx=>{
         reply_markup:{
             inline_keyboard:[
                 [{text:'Botu Qrupa Əlavə Edin ✅', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'ASO🇦🇿Rəsmi 📣', url:`t.me/ASOResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'lovelesslifee 📣', url:`t.me/lovelesslifee`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -468,8 +468,8 @@ bot.action('AZ', ctx=>{
     ctx.replyWithMarkdown(`*🇦🇿 Qruplar*`,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) Qrup ', url:'t.me/WerabliAnlar'}],
-                [{text:'2) Kanal ', url:'t.me/WerabliAnlar'}],
+                [{text:'1) Qrup ', url:'t.me/lovelesslifee'}],
+                [{text:'2) Kanal ', url:'t.me/lovelesslifee'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
@@ -484,8 +484,8 @@ bot.action('TR', ctx=>{
        `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) Qrup', url:'t.me/WerabliAnlar'}],
-                [{text:'2) Kanal', url:'t.me/WerabliAnlar'}],
+                [{text:'1) Qrup', url:'t.me/lovelesslifee'}],
+                [{text:'2) Kanal', url:'t.me/lovelesslifee'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
