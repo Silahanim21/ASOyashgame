@@ -149,7 +149,7 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 		}
 	}
 	else {
-		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat @lovelesslifee ➡️  /basla")
+		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat  ➡️  /basla")
 	}
 }
 const RaundMesajHusnuEhedov = (chatId, round, time) => {
@@ -162,7 +162,7 @@ const RaundMesajHusnuEhedov = (chatId, round, time) => {
 				firstName: member.firstName,
 				memberId: Number(memberId)
 			})
-		}
+		}i ise
 	})
 	answers = answers.sort((a, b) => oyunDurumuHusnuEhedov[chatId].answersOrder.indexOf(a.memberId) - oyunDurumuHusnuEhedov[chatId].answersOrder.indexOf(b.memberId))
 
@@ -392,7 +392,7 @@ ${(top).sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `$
 
 
 
-bot.command("komek", (ctx) => {
+bot.command("komutlar", "yardım" (ctx) => {
     return ctx.replyWithMarkdown(Degisken(`
         *merhaba! "tahmin" oyunu için\nyaratılmış bir botum🤖*\n🆘*Bot yalnız gruplar için komutlar kullanılır 🎯\n
           *komutlar👇🏻*\n\n🎲 /basla - _Oyunu Başlat_\n⛔️ /dur - _Oyunu durdurur_\n📊 /top - oyuncuları kanalları gösterir _\n_🌍 /g - global grupları gösterir\nℹ️ /komutlar - _size komutları gösterir_\n👤 /info - _kullanıcı infosu çeker _\n🆔 /id - _gruo kimliği içindir_`))
