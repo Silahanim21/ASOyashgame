@@ -268,7 +268,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 
 
 
-bot.command("basla", "yas", (ctx) => {
+bot.command("basla",(ctx) => {
 	let message = ctx.update.message
 	if (message.chat.id < 0) {
 		let chatId = message.chat.id
@@ -392,7 +392,7 @@ ${(top).sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `$
 
 
 
-bot.command("komutlar", "yardim" (ctx) => {
+bot.command("komutlar",(ctx) => {
     return ctx.replyWithMarkdown(Degisken(`
         *merhaba! "tahmin" oyunu için\nyaratılmış bir botum🤖*\n🆘*Bot yalnız gruplar için komutlar kullanılır 🎯\n
           *komutlar👇🏻*\n\n🎲 /yas - _Oyunu Başlat_\n⛔️ /dur - _Oyunu durdurur_\n📊 /top - oyuncuları kanalları gösterir _\n_🌍 /g - global grupları gösterir\nℹ️ /komutlar - _size komutları gösterir_\n👤 /info - _kullanıcı infosu çeker _\n🆔 /id - _gruo kimliği içindir_`))
