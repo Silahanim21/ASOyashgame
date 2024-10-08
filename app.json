@@ -7,15 +7,15 @@
   "env": {
     "TOKEN": {
       "description": "@BotFather'dan oluşturduğunuz botun tokeni.",
-      "value": ""
+      "value": "7445826535:AAEh1p986jgI-EaaSDZiRQnLMGEh1BV1azc"
     },
     "ID_BOT": {
       "description": "Botun ID Yazın (İlk Rakamlar)",
-      "value": ""
+      "value": "7445826535"
     },
     "BOT_ISMI": {
       "description": "Botun Kullanıcı Adını '@' Olmadan Yazın",
-      "value": "VanessaYash_bot"
+      "value": "Tgmusicxcbot"
     },
     "RAUND_SAYI": {
       "description": "RAUND SAYISI (3-5) İdeal aralık ",
