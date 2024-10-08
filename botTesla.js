@@ -162,7 +162,7 @@ const RaundMesajHusnuEhedov = (chatId, round, time) => {
 				firstName: member.firstName,
 				memberId: Number(memberId)
 			})
-		}i ise
+		}
 	})
 	answers = answers.sort((a, b) => oyunDurumuHusnuEhedov[chatId].answersOrder.indexOf(a.memberId) - oyunDurumuHusnuEhedov[chatId].answersOrder.indexOf(b.memberId))
 
