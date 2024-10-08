@@ -440,7 +440,7 @@ bot.action('start', ctx=>{
         `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:" beni grubuna ekle ✅', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
+                [{text:' beni grubuna ekle ✅', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
                 [{text:'GeceSohbettr 📣', url:`t.me/GeceSohbettr`},{text:'gruplar 💎', callback_data:'vip'}]
             ]
         }
